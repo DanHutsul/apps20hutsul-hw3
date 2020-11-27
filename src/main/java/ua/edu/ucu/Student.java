@@ -37,10 +37,7 @@ class Student {
     }
 
     public boolean equals(Student obj) {
-        return (this.name.equals(obj.name) &&
-                (this.year == obj.year) &&
-                (this.GPA == obj.GPA) &&
-                (this.surname.equals(obj.surname)));
+        return (this.name.equals(obj.name) && (this.year == obj.year) && (this.GPA == obj.GPA) && (this.surname.equals(obj.surname)));
     }
 
 }
