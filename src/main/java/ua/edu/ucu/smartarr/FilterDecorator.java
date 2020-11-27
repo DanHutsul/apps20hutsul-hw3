@@ -35,7 +35,7 @@ public class FilterDecorator extends SmartArrayDecorator {
 
     @Override
     public String operationDescription() {
-        return "Deletes elements that are not compatible with predicate";
+        return "Deletes elements that do not satisfy MyPredicate";
     }
 
     @Override
