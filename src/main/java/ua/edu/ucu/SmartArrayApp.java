@@ -57,7 +57,7 @@ public class SmartArrayApp {
     public static String[]
     findDistinctStudentNamesFrom2ndYearWithGPAgt4AndOrderedBySurname(
             Student[] students) {
-        // Select those who are 2nd year students
+
         MyPredicate selectSecondYear = new MyPredicate() {
             @Override
             public boolean test(Object t) {
@@ -66,8 +66,7 @@ public class SmartArrayApp {
             }
         };
 
-        // To String
-        MyFunction objToString = new MyFunction() {
+        MyFunction toString = new MyFunction() {
             @Override
             public Object apply(Object stud) {
                 return ((Student) stud).getSurname() +
@@ -75,8 +74,7 @@ public class SmartArrayApp {
             }
         };
 
-        // Sort by Surname
-        MyComparator cmpBySurname = new MyComparator() {
+        MyComparator compareSurname = new MyComparator() {
             @Override
             public int compare(Object stud1, Object stud2) {
                 return ((Student) stud1).getSurname()
@@ -87,9 +85,8 @@ public class SmartArrayApp {
         SmartArray studSmartArray = new BaseArray(students);
 
         studSmartArray = new FilterDecorator(studSmartArray, selectSecondYear);
-        studSmartArray = new SortDecorator(studSmartArray, cmpBySurname);
-        studSmartArray = new MapDecorator(studSmartArray, objToString);
-        // Select distinct
+        studSmartArray = new SortDecorator(studSmartArray, compareSurname);
+        studSmartArray = new MapDecorator(studSmartArray, toString);
         studSmartArray = new DistinctDecorator(studSmartArray);
         Object[] result = studSmartArray.toArray();
         return Arrays.copyOf(result, result.length, String[].class);
