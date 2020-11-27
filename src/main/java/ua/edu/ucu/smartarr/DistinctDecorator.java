@@ -47,7 +47,7 @@ public class DistinctDecorator extends SmartArrayDecorator{
 
     @Override
     public Object[] toArray() {
-        return smartArray.toArray();
+        return smartArray.toArray().clone();
     }
 
     @Override
